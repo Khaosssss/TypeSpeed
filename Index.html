@@ -1,25 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>typing test</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>TypeSpeed</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-
-    <h2>typing Speed test</h2>
-    <p id="showSentence"></p>
-
-    <div class="typing_section">
-        <!--<label for="textarea"></label>-->
-        <textarea name="textarea" id="textarea" cols="30" rows="10" placeholder="" disabled></textarea>
-        <br>
-        <button id="btn">Start</button>
-    </div>
-<div class = "resultArea">
-    <p id="score"></p>
-    <p id="accurancy"></p>
-</div>
-<script src="script.js"></script>
+    <main>
+        <h1>
+            <img src="https://cdn-icons-png.flaticon.com/128/1041/1041157.png">
+            TypeSpeed
+        </h1>
+        <div id="header">
+            <div id="info"></div>
+            <div id="buttons">
+                <button id="newGameBtn">New game</button>
+            </div>
+        </div>
+        <div id="game" tabindex="0">
+            <div id="words"></div>
+            <div id="cursor"></div>
+            <div id="focus-error">Click here to focus</div>
+        </div>
+    </main>
+    <script src="Script.js"></script>
 </body>
 </html>
