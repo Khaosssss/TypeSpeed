@@ -155,8 +155,45 @@ document.getElementById('game').addEventListener('keyup', ev => {
   cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
 });
 
-document.getElementById('newGameBtn').addEventListener('click', () => {
-  location.reload();
-});
+function setInitialCursorPosition() {
+  const initialCursorElement = document.querySelector('.word.current .letter.current') ||
+                                document.querySelector('.word.current');
+  const cursor = document.getElementById('cursor');
 
-newGame();
+  if (initialCursorElement) {
+    const rect = initialCursorElement.getBoundingClientRect();
+    const scrollX = window.scrollX || window.pageXOffset;
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    cursor.style.top = (rect.top + scrollY) + 2 + 'px';
+    cursor.style.left = (rect.left + scrollX) + 'px';
+  }
+}
+
+
+
+// document.getElementById('newGameBtn').addEventListener('click', () => {
+//   location.reload();
+// });
+function restartGame() {
+  clearInterval(window.timer);
+  window.timer = null;
+  window.gameStart = null;
+  window.pauseTime = 0;
+
+  // Reset other game-related variables as needed
+
+  // Remove 'over' class from the game element
+  removeClass(document.getElementById('game'), 'over');
+
+  // Clear existing words in the HTML
+  document.getElementById('words').innerHTML = '';
+
+  // Call newGame to generate a new set of words
+  newGame();
+  setInitialCursorPosition();
+}
+newGame()
+document.getElementById('newGameBtn').addEventListener('click', () => {
+  restartGame();
+});
