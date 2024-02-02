@@ -5,23 +5,23 @@ window.timer = null;
 window.gameStart = null;
 window.pauseTime = 0;
 
-function addClass(el,name) {
+const addClass = (el,name)=> {
   el.className += ' '+name;
 }
-function removeClass(el,name) {
+const removeClass = (el,name)=> {
   el.className = el.className.replace(name,'');
 }
 
-function randomWord() {
+const randomWord = ()=>{
   const randomIndex = Math.ceil(Math.random() * wordsCount);
   return words[randomIndex - 1];
 }
 
-function formatWord(word) {
+const formatWord = (word)=> {
   return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
 }
 
-function newGame() {
+const newGame = ()=>{
   document.getElementById('words').innerHTML = '';
   for (let i = 0; i < 200; i++) {
     document.getElementById('words').innerHTML += formatWord(randomWord());
@@ -32,7 +32,7 @@ function newGame() {
   window.timer = null;
 }
 
-function getWpm() {
+const getWpm = ()=>{
   const words = [...document.querySelectorAll('.word')];
   const lastTypedWord = document.querySelector('.word.current');
   const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
@@ -46,7 +46,7 @@ function getWpm() {
   return correctWords.length / gameTime * 60000;
 }
 
-function gameOver() {
+const gameOver = ()=>{
   clearInterval(window.timer);
   addClass(document.getElementById('game'), 'over');
   const result = getWpm();
@@ -155,7 +155,7 @@ document.getElementById('game').addEventListener('keyup', ev => {
   cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
 });
 
-function setInitialCursorPosition() {
+const setInitialCursorPosition = ()=>{
   const initialCursorElement = document.querySelector('.word.current .letter.current') ||
                                 document.querySelector('.word.current');
   const cursor = document.getElementById('cursor');
@@ -175,7 +175,7 @@ function setInitialCursorPosition() {
 // document.getElementById('newGameBtn').addEventListener('click', () => {
 //   location.reload();
 // });
-function restartGame() {
+const restartGame = ()=>{
   clearInterval(window.timer);
   window.timer = null;
   window.gameStart = null;
