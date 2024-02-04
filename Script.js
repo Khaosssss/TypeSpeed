@@ -172,28 +172,7 @@ const setInitialCursorPosition = ()=>{
 
 
 
-// document.getElementById('newGameBtn').addEventListener('click', () => {
-//   location.reload();
-// });
-const restartGame = ()=>{
-  clearInterval(window.timer);
-  window.timer = null;
-  window.gameStart = null;
-  window.pauseTime = 0;
-
-  // Reset other game-related variables as needed
-
-  // Remove 'over' class from the game element
-  removeClass(document.getElementById('game'), 'over');
-
-  // Clear existing words in the HTML
-  document.getElementById('words').innerHTML = '';
-
-  // Call newGame to generate a new set of words
-  newGame();
-  setInitialCursorPosition();
-}
-newGame()
 document.getElementById('newGameBtn').addEventListener('click', () => {
-  restartGame();
+  location.reload();
 });
+
