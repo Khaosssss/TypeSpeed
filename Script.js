@@ -5,23 +5,23 @@ window.timer = null;
 window.gameStart = null;
 window.pauseTime = 0;
 
-const addClass = (el,name)=> {
+function addClass(el,name) {
   el.className += ' '+name;
 }
-const removeClass = (el,name)=> {
+function removeClass(el,name) {
   el.className = el.className.replace(name,'');
 }
 
-const randomWord = ()=>{
+function randomWord() {
   const randomIndex = Math.ceil(Math.random() * wordsCount);
   return words[randomIndex - 1];
 }
 
-const formatWord = (word)=> {
+function formatWord(word) {
   return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
 }
 
-const newGame = ()=>{
+function newGame() {
   document.getElementById('words').innerHTML = '';
   for (let i = 0; i < 200; i++) {
     document.getElementById('words').innerHTML += formatWord(randomWord());
@@ -30,9 +30,10 @@ const newGame = ()=>{
   addClass(document.querySelector('.letter'), 'current');
   document.getElementById('info').innerHTML = (gameTime / 1000) + '';
   window.timer = null;
+  setInitialCursorPosition();
 }
 
-const getWpm = ()=>{
+function getWpm() {
   const words = [...document.querySelectorAll('.word')];
   const lastTypedWord = document.querySelector('.word.current');
   const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
@@ -46,7 +47,7 @@ const getWpm = ()=>{
   return correctWords.length / gameTime * 60000;
 }
 
-const gameOver = ()=>{
+function gameOver() {
   clearInterval(window.timer);
   addClass(document.getElementById('game'), 'over');
   const result = getWpm();
@@ -155,7 +156,7 @@ document.getElementById('game').addEventListener('keyup', ev => {
   cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
 });
 
-const setInitialCursorPosition = ()=>{
+function setInitialCursorPosition() {
   const initialCursorElement = document.querySelector('.word.current .letter.current') ||
                                 document.querySelector('.word.current');
   const cursor = document.getElementById('cursor');
@@ -170,9 +171,7 @@ const setInitialCursorPosition = ()=>{
   }
 }
 
-
-
 document.getElementById('newGameBtn').addEventListener('click', () => {
   location.reload();
 });
-
+newGame()
