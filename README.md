@@ -7,7 +7,7 @@ The **Typing Speed Calculator** is a simple web application designed to measure 
 ## Features
 
 - **Real-Time Typing Speed Calculation**: Measures typing speed as the user types.
-- **Accuracy Tracking**: Displays the percentage of correctly typed characters.
+- **Accuracy Tracking**: Displays the mistakes done in different color.
 - **Dynamic Text Samples**: Offers a variety of text passages for practice.
 - **User-Friendly Interface**: Simple and clean design for a seamless user experience.
 
@@ -23,4 +23,4 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/typing-speed-calculator.git
+   git clone https://github.com/Khaosssss/TypeSpeed.git
