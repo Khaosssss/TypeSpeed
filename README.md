@@ -25,3 +25,4 @@ To run the project locally, follow these steps:
    ```bash
    git clone https://github.com/Khaosssss/TypeSpeed.git
 ## Images
+![Screenshot of the Typing Speed Calculator](assets/img.jpg)
